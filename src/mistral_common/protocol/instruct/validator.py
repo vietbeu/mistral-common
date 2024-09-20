@@ -233,11 +233,11 @@ class MistralRequestValidator(Generic[UserMessageType, AssistantMessageType, Too
         else:
             bad_assistant = isinstance(message, AssistantMessage) and not message.prefix
             bad_role = message.role not in {Roles.user, Roles.tool}
-            if bad_assistant and bad_role:
-                raise InvalidMessageStructureException(
-                    f"Expected last role User or Tool (or Assistant with prefix True) for serving"
-                    f" but got {last_message_role.value}"
-                )
+            # if bad_assistant and bad_role:
+            #     raise InvalidMessageStructureException(
+            #         f"Expected last role User or Tool (or Assistant with prefix True) for serving"
+            #         f" but got {last_message_role.value}"
+            #     )
 
     def _validate_message_list_structure(self, messages: List[UATS]) -> None:
         """
